@@ -35,21 +35,20 @@ function App() {
       }
   },[stack])
 
-  function gridReversal(){
+  function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+  async function gridReversal(){
     
       let arr = Object.keys(stack);
-     
 
       for(let i=arr.length-1;i>=0;i--){
-         
-       
-        console.log("post filter",arr);
-
-        //setStack(arr);
-         //clearTimeout(timerId);
+         await sleep(1000);
+         let element = document.getElementById(arr[i]);
+         element.style.backgroundColor = 'red';
+                
       }
-
-    
 
   }
 
@@ -63,6 +62,7 @@ function App() {
                   return<div key={`${rowIndex}-${colIndex}`} 
                   className='gridBox'
                   onClick={(eve)=>handleClick(eve,rowIndex, colIndex)}
+                  id={`${rowIndex}-${colIndex}`}
                   style={{ backgroundColor:col==1?"red":"yellow" }}>
                     
                     </div>
